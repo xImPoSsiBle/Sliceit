@@ -1,7 +1,17 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
 
-const PizzaCard = ({ name, gram, price, img, description }) => {
+import { useRouter } from 'expo-router';
+
+
+const PizzaCard = ({ id, name, gram, price, img, description, getPizzaDetail }) => {
+    const router = useRouter();
+
+    const goToPizzaDetail = () => {
+        
+        router.push(`/pizza-detail?id=${id}`);
+
+    };
+
     return (
         <View style={[styles.card, !description && styles.smallCard]}>
             <Image source={img} style={styles.image} resizeMode='contain' />
@@ -22,7 +32,7 @@ const PizzaCard = ({ name, gram, price, img, description }) => {
                         {price}тг
                     </Text>
                 </View>
-                <TouchableOpacity style={styles.addBtn}>
+                <TouchableOpacity style={styles.addBtn} onPress={goToPizzaDetail}>
                     <Text style={styles.btnText}>Добавить</Text>
                 </TouchableOpacity>
             </View>
@@ -41,6 +51,7 @@ const styles = StyleSheet.create({
         borderColor: '#CCCCCC',
         alignItems: 'center',
         marginBottom: 10,
+        marginLeft: 6
     },
     smallCard: {
         height: 240

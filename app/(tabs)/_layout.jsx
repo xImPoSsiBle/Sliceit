@@ -6,6 +6,9 @@ import HomeIcon from '../../assets/images/home-icon.png'
 import CustomIcon from '../../assets/images/custom-icon.png'
 import CartIcon from '../../assets/images/cart-icon.png'
 import ProfileIcon from '../../assets/images/profile-icon.png'
+import HeaderLogo from '../../component/HeaderLogo'
+import HeaderInput from '../../component/HeaderInput'
+
 
 
 const TabIcon = ({ icon, color, name, focused }) => {
@@ -30,9 +33,11 @@ const TabIcon = ({ icon, color, name, focused }) => {
 
 const TabLayout = () => {
     return (
-        <Tabs>
+        <Tabs
+            screenOptions={{ tabBarActiveTintColor: 'black' }}
+        >
             <Tabs.Screen name='home' options={{
-                headerShown: false,
+                header: () => <HeaderInput/>,
                 tabBarShowLabel: false,
                 tabBarIcon: ({ color, focused }) => (
                     <TabIcon
@@ -43,8 +48,8 @@ const TabLayout = () => {
                 )
             }} />
             <Tabs.Screen name='custom-pizza' options={{
+                header: () => <HeaderLogo/>,
                 tabBarShowLabel: false,
-                headerShown: false,
                 tabBarIcon: ({ color, focused }) => (
                     <TabIcon
                         name="Custom"
@@ -54,7 +59,7 @@ const TabLayout = () => {
                 )
             }} />
             <Tabs.Screen name='cart' options={{
-                headerShown: false,
+                header: () => <HeaderLogo/>,
                 tabBarShowLabel: false,
                 tabBarIcon: ({ color, focused }) => (
                     <TabIcon
@@ -65,8 +70,8 @@ const TabLayout = () => {
                 )
             }} />
             <Tabs.Screen name='profile' options={{
+                 header: () => <HeaderLogo/>,
                 tabBarShowLabel: false,
-                headerShown: false,
                 tabBarIcon: ({ color, focused }) => (
                     <TabIcon
                         name="Profile"

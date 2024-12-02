@@ -5,10 +5,24 @@ import leftArrow from '../../assets/images/arrowLeft.png'
 import { Link } from 'expo-router'
 
 const SignUp = () => {
-    const [name, setName] = useState('')
+    const [username, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [phone, setPhone] = useState('')
+
+    const fetchSignUp = async () => {
+        const obj = { username, email, password, phone_number: phone }
+
+        const resp = await fetch('https://amir175.pythonanywhere.com/api/users/register/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(obj)
+        })
+
+        const data = await resp.json();
+    }
 
     return (
         <SafeAreaView style={styles.safeArea}>
@@ -28,7 +42,7 @@ const SignUp = () => {
                     <TextInput placeholder='Password' onChangeText={setPassword} style={styles.input} />
                     <TextInput placeholder='Phone' onChangeText={setPhone} style={styles.input} />
 
-                    <TouchableOpacity style={styles.btn}>
+                    <TouchableOpacity style={styles.btn} onPress={fetchSignUp}>
                         <Text style={{ color: 'white', fontWeight: 'bold' }}>
                             Sign Up
                         </Text>

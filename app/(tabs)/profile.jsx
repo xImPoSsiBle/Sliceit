@@ -45,7 +45,7 @@ export default Profile
 
 const styles = StyleSheet.create({
     safeArea: {
-        flex: 1
+        flex: 1,
     },
     profileBg: {
         height: 200,

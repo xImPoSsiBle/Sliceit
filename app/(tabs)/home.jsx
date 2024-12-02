@@ -1,7 +1,9 @@
 import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import PizzaCard from '../../component/PizzaCard';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+
+import { SearchContext } from '../../context/SearchProvider'
 
 import PizzaImg from '../../assets/images/pizzaImg.png'
 import PizzasCategoryIcon from '../../assets/images/pizzaCategoryIcon.png'
@@ -32,9 +34,18 @@ const CategoryItem = ({ name, img }) => {
 
 const PizzaList = () => {
     const [numColumns] = useState(2);
+    const [products, setProducts] = useState(pizzas)
+    const { value } = useContext(SearchContext)
+
+
+    const searchProducts = (list) => {
+        return list.filter(product => product.name.toLowerCase().includes(value.toLowerCase()))
+    }
+
+    const visibleItems = searchProducts(products)
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={styles.safeArea}>
             <View style={styles.categoryContainer}>
                 <FlatList
                     contentContainerStyle={styles.categoryList}
@@ -52,14 +63,14 @@ const PizzaList = () => {
             <View style={styles.contentContainer}>
                 <FlatList
                     columnWrapperStyle={{
-                        justifyContent: 'space-around',
-                        alignItems: 'flex-start'
+                        justifyContent: 'flex-start',
                     }}
-                    data={pizzas}
+                    data={visibleItems}
                     keyExtractor={item => item.id}
                     numColumns={numColumns}
                     renderItem={({ item }) =>
                         <PizzaCard
+                            id={item.id}
                             name={item.name}
                             description={item.description}
                             gram={item.gram}
@@ -77,6 +88,10 @@ export default PizzaList
 
 
 const styles = StyleSheet.create({
+    safeArea: {
+        flex: 1,
+        marginTop: 20
+    },
     categoryCard: {
         width: 90,
         height: 30,
