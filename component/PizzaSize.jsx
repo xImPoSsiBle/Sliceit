@@ -17,7 +17,10 @@ const PizzaSize = ({handlePress}) => {
             duration: 300,
             useNativeDriver: false,
         }).start();
+<<<<<<< HEAD
         setSelectedSize(index);
+=======
+>>>>>>> 503dc6faa8c479e3395d73593cf3a0abd8b94900
     }
 
     

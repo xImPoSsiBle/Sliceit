@@ -11,9 +11,12 @@ import RadioButton from '../component/RadioButton';
 import CheddarIcon from '../assets/images/cheddar.png'
 import BaconIcon from '../assets/images/BaconIcon.png'
 import ChampignonsIcon from '../assets/images/champignons.png'
+<<<<<<< HEAD
 import { AuthContext } from '../context/AuthProvider';
 import LoadingSpinner from '../component/LoadingSpinner';
 import { useRouter } from 'expo-router';
+=======
+>>>>>>> 503dc6faa8c479e3395d73593cf3a0abd8b94900
 
 
 const PizzaDetail = () => {
@@ -23,6 +26,7 @@ const PizzaDetail = () => {
 
     const route = useRoute();
     const { id } = route.params;
+<<<<<<< HEAD
     const { setCart, } = useContext(CartContext)
     const { accessToken } = useContext(AuthContext)
 
@@ -58,6 +62,25 @@ const PizzaDetail = () => {
         console.log(data)
         // alert('Товар добавлен в корзину')
         // router.push('/home')
+=======
+    const { setCart, pizzas } = useContext(CartContext)
+
+    const products = [{ id: 1, name: 'Больше сыра', img: CheddarIcon, price: 600 }, { id: 2, name: 'Больше бекона', img: BaconIcon, price: 600 }, { id: 3, name: 'Больше шампиьнона', img: ChampignonsIcon, price: 340 },]
+
+    const addToCart = () => {
+        const { id, name, gram, price, image } = pizza
+        const newItem = { id, name, gram, price, image, count: 1, size };
+
+        setCart((prevCart) => {
+            const idx = prevCart.findIndex(item => item.id === id)
+            if (idx !== -1) {
+                const updatedCart = [...prevCart]
+                updatedCart[idx].count += 1
+                return updatedCart
+            }
+            return [...prevCart, newItem]
+        })
+>>>>>>> 503dc6faa8c479e3395d73593cf3a0abd8b94900
     }
 
     const selectButton = (id) => {
@@ -65,6 +88,7 @@ const PizzaDetail = () => {
         setRadioSelected(id)
     }
 
+<<<<<<< HEAD
     const getPizza = async (id) => {
         const resp = await fetch(`https://amir175.pythonanywhere.com/api/products/products/${id}/`, {
             method: 'GET',
@@ -84,13 +108,29 @@ const PizzaDetail = () => {
     if (!pizza) {
         return (
             <LoadingSpinner />
+=======
+    useEffect(() => {
+        const selectedPizza = pizzas.find(item => item.id === parseInt(id));
+        setPizza(selectedPizza);
+    }, [id, pizzas])
+
+    if (!pizza) {
+        return (
+            <SafeAreaView style={styles.safeArea}>
+                <Text>Загрузка...</Text>
+            </SafeAreaView>
+>>>>>>> 503dc6faa8c479e3395d73593cf3a0abd8b94900
         );
     }
 
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.container}>
+<<<<<<< HEAD
                 <Image source={{ uri: pizza.image }} style={styles.img} resizeMode='contain' />
+=======
+                <Image source={pizza.image} style={styles.img} resizeMode='contain' />
+>>>>>>> 503dc6faa8c479e3395d73593cf3a0abd8b94900
                 <View style={styles.info}>
                     <Text style={styles.name}>{pizza.name}</Text>
                     <Text style={styles.description}>{pizza.description}</Text>
@@ -100,7 +140,11 @@ const PizzaDetail = () => {
                 <Text>Добавки</Text>
                 {products.map((val) => {
                     return (
+<<<<<<< HEAD
                         <View style={styles.pizzaDetail} key={val.id}>
+=======
+                        <View style={styles.pizzaDetail}>
+>>>>>>> 503dc6faa8c479e3395d73593cf3a0abd8b94900
                             <View style={styles.pizzaDetailName}>
                                 <Image
                                     source={val.img}
@@ -123,7 +167,11 @@ const PizzaDetail = () => {
                     )
                 })
                 }
+<<<<<<< HEAD
                 <CustomButton text="Добавить" handlePress={() => addToCart(id)} style={{ marginTop: 150 }} />
+=======
+                <CustomButton text="Добавить" handlePress={addToCart} style={{marginTop: 150}}/>
+>>>>>>> 503dc6faa8c479e3395d73593cf3a0abd8b94900
             </View>
         </SafeAreaView>
     )
@@ -173,6 +221,10 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     price: {
+<<<<<<< HEAD
         marginRight: 10
+=======
+        marginRight:10
+>>>>>>> 503dc6faa8c479e3395d73593cf3a0abd8b94900
     }
 })

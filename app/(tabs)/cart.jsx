@@ -7,14 +7,18 @@ import { Shadow } from 'react-native-shadow-2'
 
 import EmptyCartIcon from '../../assets/images/EmptyCartIcon.png'
 import CustomButton from '../../component/CustomButton'
+<<<<<<< HEAD
 import { AuthContext } from '../../context/AuthProvider'
 import { useFocusEffect } from '@react-navigation/native'
+=======
+>>>>>>> 503dc6faa8c479e3395d73593cf3a0abd8b94900
 
 const Cart = () => {
     const [choosedType, setChoosedType] = useState('Доставка')
     const [totalPrice, setTotalPrice] = useState(0)
 
     const { cart, setCart } = useContext(CartContext)
+<<<<<<< HEAD
     const { accessToken } = useContext(AuthContext)
 
     const deliveryType = ['Доставка', 'Самовывоз']
@@ -22,11 +26,20 @@ const Cart = () => {
     // const removeItem = (id) => {
     //     setCart((prevCart) => prevCart.filter(item => item.id !== id))
     // }
+=======
+
+    const deliveryType = ['Доставка', 'Самовывоз']
+
+    const removeItem = (id) => {
+        setCart((prevCart) => prevCart.filter(item => item.id !== id))
+    }
+>>>>>>> 503dc6faa8c479e3395d73593cf3a0abd8b94900
 
     const handlePress = (type) => {
         setChoosedType(type)
     }
 
+<<<<<<< HEAD
     const getCart = async () => {
         const resp = await fetch('https://amir175.pythonanywhere.com/api/products/cart/', {
             method: 'GET',
@@ -49,11 +62,22 @@ const Cart = () => {
     //     setTotalPrice(total)
     // }
 
+=======
+    const getTotalPrice = () => {
+        const total = cart.reduce((acc, item) => {
+            return acc += item.price * item.count
+        }, 0)
+
+        setTotalPrice(total)
+    }
+
+>>>>>>> 503dc6faa8c479e3395d73593cf3a0abd8b94900
     const getOrder = () => {
         setCart([])
         return alert('Заказ был оформен')
     }
 
+<<<<<<< HEAD
     // useEffect(() => {
     //     console.log(cart)
     // }, [cart])
@@ -63,6 +87,12 @@ const Cart = () => {
             getCart();
         }, [])
     );
+=======
+    useEffect(() => {
+        getTotalPrice()
+    }, [cart])
+
+>>>>>>> 503dc6faa8c479e3395d73593cf3a0abd8b94900
     return (
         <SafeAreaView style={styles.safeArea}>
             <Text>Корзина</Text>
@@ -90,12 +120,30 @@ const Cart = () => {
                 paddingBottom: 10
             }}
             >
+<<<<<<< HEAD
                 {cart?.items && cart.items.length > 0
                     ? <FlatList
                         data={cart.items}
                         keyExtractor={(item) => item.id.toString()}
                         renderItem={({ item }) => (
                             <CartItem item={item} />
+=======
+                {cart.length
+                    ? <FlatList
+                        contentContainerStyle={styles.cartList}
+                        data={cart}
+                        keyExtractor={item => item.id}
+                        renderItem={({ item }) => (
+                            <CartItem
+                                id={item.id}
+                                name={item.name}
+                                img={item.image}
+                                price={item.price}
+                                count={item.count}
+                                size={item.size}
+                                removeItem={removeItem}
+                            />
+>>>>>>> 503dc6faa8c479e3395d73593cf3a0abd8b94900
                         )}
                     />
                     : <Shadow distance={6}
@@ -110,7 +158,11 @@ const Cart = () => {
                     </Shadow>}
             </View>
             <CustomButton
+<<<<<<< HEAD
                 text={`Оформить за ₸`}
+=======
+                text={`Оформить за ${totalPrice}₸`}
+>>>>>>> 503dc6faa8c479e3395d73593cf3a0abd8b94900
                 style={[{ marginBottom: 10 }, !cart.length && { display: 'none' }]}
                 handlePress={getOrder}
             />
@@ -124,8 +176,12 @@ const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
         justifyContent: 'center',
+<<<<<<< HEAD
         alignItems: 'center',
         marginTop: 10
+=======
+        alignItems: 'center'
+>>>>>>> 503dc6faa8c479e3395d73593cf3a0abd8b94900
     },
     type: {
         width: '90%',

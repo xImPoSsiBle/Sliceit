@@ -2,11 +2,16 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { useContext } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import leftArrow from '../../assets/images/arrowLeft.png'
+<<<<<<< HEAD
 import { Link, Redirect, router } from 'expo-router'
+=======
+import { Link, Redirect } from 'expo-router'
+>>>>>>> 503dc6faa8c479e3395d73593cf3a0abd8b94900
 
 import Avatar from '../../assets/images/avatar.png'
 import { AuthContext } from '../../context/AuthProvider'
 
+<<<<<<< HEAD
 import ProfileIcon from '../../assets/images/profile-icon.png'
 import CardIcon from '../../assets/images/cardIcon.png'
 import OrderIcon from '../../assets/images/orderIcon.png'
@@ -47,15 +52,23 @@ const Profile = () => {
     }
     ]
 
+=======
+const Profile = () => {
+    const { logout, isLogged } = useContext(AuthContext)
+
+>>>>>>> 503dc6faa8c479e3395d73593cf3a0abd8b94900
     const handlPress = async () => {
         // console.log('work')
         await logout()
     }
 
+<<<<<<< HEAD
     const redirectHandler = (route) => {
         router.push(route)
     }
 
+=======
+>>>>>>> 503dc6faa8c479e3395d73593cf3a0abd8b94900
     if (!isLogged) return <Redirect href={'/sign-in'} />
 
     return (
@@ -73,6 +86,7 @@ const Profile = () => {
                         resizeMode='contain' />
                 </View>
             </View>
+<<<<<<< HEAD
 
             <View style={styles.container}>
                 {navs.map(item => (
@@ -90,6 +104,11 @@ const Profile = () => {
                         <Text>Выйти</Text>
                     </View>
                     <Image source={ArrowIcon} style={styles.arrow} resizeMode="contain" />
+=======
+            <View style={styles.container}>
+                <TouchableOpacity onPress={handlPress} style={styles.editBtn}>
+                    <Text style={{color: 'white'}}>Logout</Text>
+>>>>>>> 503dc6faa8c479e3395d73593cf3a0abd8b94900
                 </TouchableOpacity>
             </View>
         </SafeAreaView>
@@ -101,7 +120,10 @@ export default Profile
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
+<<<<<<< HEAD
         marginTop: 30
+=======
+>>>>>>> 503dc6faa8c479e3395d73593cf3a0abd8b94900
     },
     profileBg: {
         height: 200,
@@ -137,6 +159,7 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
+<<<<<<< HEAD
         marginTop: 50
     },
     containerNav: {
@@ -156,5 +179,17 @@ const styles = StyleSheet.create({
         width: 20,
         height: 20,
         tintColor: 'black'
+=======
+        alignItems: 'center'
+    },
+    editBtn: {
+        width: 100,
+        marginTop: 50,
+        alignItems: 'center',
+        backgroundColor: 'black',
+        paddingTop: 5,
+        paddingBottom: 5,
+        borderRadius: 5
+>>>>>>> 503dc6faa8c479e3395d73593cf3a0abd8b94900
     }
 })

@@ -12,7 +12,13 @@
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
+<<<<<<< HEAD
     "expo-env.d.ts",
     "app/_layout.jsx"
   ],
 }
+=======
+    "expo-env.d.ts"
+, "app/_layout.jsx"  ]
+}
+>>>>>>> 503dc6faa8c479e3395d73593cf3a0abd8b94900

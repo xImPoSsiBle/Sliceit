@@ -10,7 +10,11 @@ const HeaderInput = () => {
     const { value, setValue } = useContext(SearchContext);
 
     return (
+<<<<<<< HEAD
         <SafeAreaView style={{ flex: 1, marginBottom: 0 }}>
+=======
+        <SafeAreaView style={{flex: 1, marginBottom: 0}}>
+>>>>>>> 503dc6faa8c479e3395d73593cf3a0abd8b94900
             <View style={styles.header}>
                 <View style={styles.searchView}>
                     <Image source={SearchIcon} style={styles.searchIcon} resizeMode='contain' />
@@ -38,6 +42,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     searchInput: {
+<<<<<<< HEAD
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'white',
@@ -45,6 +50,14 @@ const styles = StyleSheet.create({
         height: 35,
         borderRadius: 5,
         paddingLeft: 35,
+=======
+        backgroundColor: 'white',
+        width: 230,
+        height: 30,
+        borderRadius: 5,
+        paddingHorizontal: 10,
+        paddingLeft: 30
+>>>>>>> 503dc6faa8c479e3395d73593cf3a0abd8b94900
     },
     searchIcon: {
         height: 20,
@@ -56,6 +69,10 @@ const styles = StyleSheet.create({
     },
     logo: {
         height: 45,
+<<<<<<< HEAD
         tintColor: 'white',
+=======
+        tintColor: 'white'
+>>>>>>> 503dc6faa8c479e3395d73593cf3a0abd8b94900
     }
 });

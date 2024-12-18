@@ -65,7 +65,10 @@ const AuthProvider = ({ children }) => {
     const logout = async () => {
         await AsyncStorage.clear();
         setIsLogged(false);
+<<<<<<< HEAD
         console.log('logout')
+=======
+>>>>>>> 503dc6faa8c479e3395d73593cf3a0abd8b94900
     }
 
     useEffect(() => {

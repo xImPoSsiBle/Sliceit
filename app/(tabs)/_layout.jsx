@@ -94,7 +94,10 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
+<<<<<<< HEAD
         width: 60,
+=======
+>>>>>>> 503dc6faa8c479e3395d73593cf3a0abd8b94900
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'space-around',
